@@ -24,7 +24,12 @@ addBookToLibrary("The Hobbit","JRR Tolkien",350,true);
 addBookToLibrary("The Lion, The Witch, and the Wardrobe","CS Lewis", 245, true)
 addBookToLibrary("War and Peace","Leo Tolstoy",90000,false);
 
-console.log(myLibrary[0].info())
+const addBookButton = document.querySelector("#new-book-button");
+addBookButton.addEventListener("click",(e) => {
+    const sidebar = document.querySelector(".add-book-sidebar");
+    sidebar.toggleAttribute("hidden");
+})
+
 const table = document.querySelector("#library-table-body");
 for (const book of myLibrary) {
     console.log(book.info())
@@ -32,7 +37,7 @@ for (const book of myLibrary) {
     table.appendChild(tr);
     for (const prop in book) {
         console.log(typeof(book[prop]))
-        if(typeof(book[prop]) !== 'function') {
+        if(typeof(book[prop]) !== 'function' && prop !== 'id') {
             const td = document.createElement("td");
             td.textContent=book[prop];
             tr.appendChild(td);

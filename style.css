@@ -1,8 +1,22 @@
 body {
-    display: flex;
-    justify-content: center;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: auto minmax(0,3fr);
+    grid-template-rows: auto auto;
+}
+.container {
+    grid-column-start: 2;
+    justify-items: center;
+}
+
+.add-book-sidebar {
+    background-color: #ffe3c2;
+    grid-column-start: 1;
+
 }
 table {
+    width: 80%;
     margin-top: 10px;
     border: 1px solid black;
     border-collapse: collapse;
@@ -19,4 +33,10 @@ tbody tr:nth-child(even) {
 th {
     background-color: orange;
     padding: 10px;
+}
+
+#new-book-button {
+    width: 250px;
+    padding: 10px;
+    margin: 10px;
 }
