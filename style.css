@@ -5,9 +5,18 @@ body {
 table {
     margin-top: 10px;
     border: 1px solid black;
-    width: 80%;
+    border-collapse: collapse;
+}
+
+td {
+    border: 1px solid black;
+    padding: 10px;
+}
+tbody tr:nth-child(even) {
+    background-color: #ffe3c2;
 }
 
 th {
-    padding: 10px 0px;
+    background-color: orange;
+    padding: 10px;
 }
