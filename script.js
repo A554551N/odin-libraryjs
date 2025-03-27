@@ -37,9 +37,12 @@ addBookButton.addEventListener("click",(e) => {
 const submitBookButton = document.querySelector("#submit-button");
 submitBookButton.addEventListener("click", (e) => {
     e.preventDefault();
-    const titleToAdd = document.querySelector("#title").value;
-    const authorToAdd = document.querySelector("#author").value;
-    const pgNumToAdd = document.querySelector("#pages").value;
+    const title = document.querySelector("#title")
+    const titleToAdd = title.value;
+    const author = document.querySelector("#author")
+    const authorToAdd = author.value;
+    const pgNum = document.querySelector("#pages")
+    const pgNumToAdd = pgNum.value;
     const haveReadElement = document.querySelectorAll("#haveread");
     let haveRead;
     for (e of haveReadElement) {
@@ -54,9 +57,11 @@ submitBookButton.addEventListener("click", (e) => {
         sidebar.classList.add("hidden-book-sidebar");
         sidebar.classList.remove("add-book-sidebar");
         addBookToLibrary(titleToAdd,authorToAdd,pgNumToAdd,haveRead)
+        title.value="";
+        author.value="";
+        pgNum.value="";
+        haveReadElement[0].checked = true;
         renderTable();
-        console.log(`Title: ${titleToAdd}\nAuthor: ${authorToAdd}
-            \nPages: ${pgNumToAdd}\nHave Read: ${haveRead}`);
     }    
 })
 
@@ -64,11 +69,9 @@ function renderTable() {
 const table = document.querySelector("#library-table-body");
 table.replaceChildren();
     for (const book of myLibrary) {
-        console.log(book.info())
         const tr = document.createElement("tr");
         table.appendChild(tr);
         for (const prop in book) {
-            console.log(typeof(book[prop]))
             if(typeof(book[prop]) !== 'function' && prop !== 'id') {
                 const td = document.createElement("td");
                 td.textContent=book[prop];
