@@ -7,12 +7,13 @@ function Book(title,author,pages,read) {
     this.pages = pages;
     this.read = read;
     this.info = function() {
+        let haveRead;
         if (this.read === true) {
             haveRead = "I've read it" 
         } else {
             haveRead = "I haven't read it"
         }
-        return `${this.title} by ${this.author}, ${pages} pages.  ${this.haveRead}.`
+        return `${this.title} by ${this.author}, ${this.pages} pages.  ${haveRead}.`
     }
 }
 
@@ -33,8 +34,35 @@ addBookButton.addEventListener("click",(e) => {
     titleInput.focus();
 })
 
-const renderTable = function() {
+const submitBookButton = document.querySelector("#submit-button");
+submitBookButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    const titleToAdd = document.querySelector("#title").value;
+    const authorToAdd = document.querySelector("#author").value;
+    const pgNumToAdd = document.querySelector("#pages").value;
+    const haveReadElement = document.querySelectorAll("#haveread");
+    let haveRead;
+    for (e of haveReadElement) {
+        if (e.checked) {
+            haveRead = e.value;
+        } 
+    }
+    if (titleToAdd === "" || authorToAdd  === "" || pgNumToAdd === "") {
+        alert("You must submit a value for all fields.")
+    } else {
+        const sidebar = document.querySelector(".add-book-sidebar");
+        sidebar.classList.add("hidden-book-sidebar");
+        sidebar.classList.remove("add-book-sidebar");
+        addBookToLibrary(titleToAdd,authorToAdd,pgNumToAdd,haveRead)
+        renderTable();
+        console.log(`Title: ${titleToAdd}\nAuthor: ${authorToAdd}
+            \nPages: ${pgNumToAdd}\nHave Read: ${haveRead}`);
+    }    
+})
+
+function renderTable() {
 const table = document.querySelector("#library-table-body");
+table.replaceChildren();
     for (const book of myLibrary) {
         console.log(book.info())
         const tr = document.createElement("tr");
