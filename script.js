@@ -28,7 +28,9 @@ const addBookButton = document.querySelector("#new-book-button");
 addBookButton.addEventListener("click",(e) => {
     const sidebar = document.querySelector(".hidden-book-sidebar");
     sidebar.classList.remove("hidden-book-sidebar");
-    sidebar.classList.add("add-book-sidebar")
+    sidebar.classList.add("add-book-sidebar");
+    const titleInput = document.querySelector("#title");
+    titleInput.focus();
 })
 
 const renderTable = function() {
