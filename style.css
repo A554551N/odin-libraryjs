@@ -5,6 +5,10 @@ body {
     grid-template-columns: auto minmax(0,3fr);
     grid-template-rows: auto auto;
 }
+
+#page-header {
+    text-align: center;
+}
 .container {
     grid-column-start: 2;
     justify-items: center;
@@ -57,17 +61,22 @@ th {
     text-align: center;
 }
 
-#new-book-button {
-    width: 250px;
-    padding: 10px;
-    margin: 10px;
+button {
+    background-color: lightblue;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-weight: 600;
 }
 
-#submit-button {
+button:hover {
+    background-color: orange;
+}
+
+#submit-button, #new-book-button {
+    align-self: center;
     margin: 10px;
     padding: 20px 40px;
     width: 150px;
-    align-self: center;
 }
 
 .delete-button,.toggle-read-button {
@@ -85,14 +94,4 @@ th {
 .toggle-read-button {
     background-image: url('toggle.svg');
     margin-left: 10px;
-}
-
-button {
-    background-color: lightblue;
-    border: 2px solid black;
-    border-radius: 5px;
-}
-
-button:hover {
-    background-color: orange;
 }
