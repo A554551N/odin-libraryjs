@@ -13,8 +13,23 @@ body {
 .add-book-sidebar {
     background-color: #ffe3c2;
     grid-column-start: 1;
-
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border: 2px solid orange;
 }
+form {
+    display: flex;
+    flex-direction: column;
+}
+input[type=text],input[type=number] {
+    font-size: 1.5rem;
+    width: 250px;
+}
+.hidden-book-sidebar {
+    display: none;
+}
+
 table {
     width: 80%;
     margin-top: 10px;
@@ -39,4 +54,11 @@ th {
     width: 250px;
     padding: 10px;
     margin: 10px;
+}
+
+#submit-button {
+    margin: 10px;
+    padding: 20px 40px;
+    width: 150px;
+    align-self: center;
 }

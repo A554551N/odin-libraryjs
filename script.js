@@ -26,8 +26,9 @@ addBookToLibrary("War and Peace","Leo Tolstoy",90000,false);
 
 const addBookButton = document.querySelector("#new-book-button");
 addBookButton.addEventListener("click",(e) => {
-    const sidebar = document.querySelector(".add-book-sidebar");
-    sidebar.toggleAttribute("hidden");
+    const sidebar = document.querySelector(".hidden-book-sidebar");
+    sidebar.classList.remove("hidden-book-sidebar");
+    sidebar.classList.add("add-book-sidebar")
 })
 
 const renderTable = function() {

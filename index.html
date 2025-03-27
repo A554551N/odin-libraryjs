@@ -8,12 +8,13 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="add-book-sidebar" hidden>
+    <div class="hidden-book-sidebar">
         <h1 class="sidebar-header">Add a Book</h1>
         <p>All fields are required.</p>
         <form>
-            <label for="title">Title <input type="text" id="title" name="title" required></label>
-            <label for="author">Author <input type="text" id="author" name="author" required></label>
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" required>
+            <label for="author">Author</label><input type="text" id="author" name="author" required>
             <label for="pages">Page Count </label><input type="number" id="pages" min="0" name="pages" required>
             <p>Have you read this book?</p>
             <label for="read-true">True 
