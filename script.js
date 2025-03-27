@@ -30,17 +30,21 @@ addBookButton.addEventListener("click",(e) => {
     sidebar.toggleAttribute("hidden");
 })
 
+const renderTable = function() {
 const table = document.querySelector("#library-table-body");
-for (const book of myLibrary) {
-    console.log(book.info())
-    const tr = document.createElement("tr");
-    table.appendChild(tr);
-    for (const prop in book) {
-        console.log(typeof(book[prop]))
-        if(typeof(book[prop]) !== 'function' && prop !== 'id') {
-            const td = document.createElement("td");
-            td.textContent=book[prop];
-            tr.appendChild(td);
+    for (const book of myLibrary) {
+        console.log(book.info())
+        const tr = document.createElement("tr");
+        table.appendChild(tr);
+        for (const prop in book) {
+            console.log(typeof(book[prop]))
+            if(typeof(book[prop]) !== 'function' && prop !== 'id') {
+                const td = document.createElement("td");
+                td.textContent=book[prop];
+                tr.appendChild(td);
+            }
         }
     }
 }
+
+renderTable();

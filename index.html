@@ -9,7 +9,21 @@
 </head>
 <body>
     <div class="add-book-sidebar" hidden>
-        HERE IS A TEST
+        <h1 class="sidebar-header">Add a Book</h1>
+        <p>All fields are required.</p>
+        <form>
+            <label for="title">Title <input type="text" id="title" name="title" required></label>
+            <label for="author">Author <input type="text" id="author" name="author" required></label>
+            <label for="pages">Page Count </label><input type="number" id="pages" min="0" name="pages" required>
+            <p>Have you read this book?</p>
+            <label for="read-true">True 
+                <input type="radio" name="haveread" id="read-true" value="true" checked>
+            </label>
+            <label for="read-false">False
+                <input type="radio" name="haveread" id="read-false" value="false">
+            </label>
+            <button type="submit" id="submit-button">Add Book</button>
+        </form>
     </div>
     <div class="container">
         <table>
