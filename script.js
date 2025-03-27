@@ -15,6 +15,13 @@ function Book(title,author,pages,read) {
         }
         return `${this.title} by ${this.author}, ${this.pages} pages.  ${haveRead}.`
     }
+    this.toggleRead = function() {
+        if (this.read) {
+            this.read = false;
+        } else {
+            this.read = true;
+        }
+    }
 }
 
 function addBookToLibrary(title,author,pages,read) {
@@ -78,6 +85,43 @@ table.replaceChildren();
                 tr.appendChild(td);
             }
         }
+        const td = document.createElement("td")
+        td.classList.add("button-column");
+
+        const deleteButton = document.createElement("button");
+        deleteButton.setAttribute("data-id",book.id);
+        deleteButton.type = "button";
+        deleteButton.classList.add("delete-button");
+
+        const toggleReadButton = document.createElement("button");
+        toggleReadButton.setAttribute("data-id",book.id);
+        toggleReadButton.type = "button";
+        toggleReadButton.classList.add("toggle-read-button");
+
+        deleteButton.addEventListener("click", (e) => {
+            const bookToDelete = e.target.dataset.id;
+            for(i=0;i<myLibrary.length;i++) {
+                if (myLibrary[i].id === bookToDelete) {
+                    myLibrary.splice(i,1);
+                }
+            }
+            renderTable();
+        })
+
+        toggleReadButton.addEventListener("click", (e) => {
+            const bookToToggle = e.target.dataset.id;
+            for(i=0;i<myLibrary.length;i++) {
+                if (myLibrary[i].id === bookToToggle) {
+                    myLibrary[i].toggleRead();
+                    console.log("Click")
+                }
+            }
+            renderTable();
+        })
+
+        td.appendChild(deleteButton);
+        td.appendChild(toggleReadButton);
+        tr.appendChild(td);
     }
 }
 
